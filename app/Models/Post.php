@@ -1,51 +1,12 @@
 <?php
 
-use App\Models\Post;
-use Illuminate\Support\Facades\Route;
+namespace App\Models;
 
 
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
-
-Route::get('/', function () {
-    return view('home',[
-        "title" => 'Home'
-    ]);
-});
-
-
-Route::get('/about', function () {
-    return view('about',[
-        "name" => "Cepi Yoga Asmara",
-        "email" => "cepiyoga@gmail.com",
-        "image" => "cepi.jpg",
-        "title" => 'About'
-    ]);
-});
-
-
-
-Route::get('/blog', function () {
-    $blog_post = [];
-
-    return view('posts',[
-        "title" => 'Blog',
-        "posts" => Post::all()
-    ]);
-});
-
-
-Route::get('post/{slug}',function($slug){
-    $blog_post = [[
+class Post
+{
+    private static $blog_post = [[
         "title" => "Judul Post Pertama",
         "slug" => "judul-post-pertama",
         "author" => "Cepi Yoga Asmara",
@@ -57,18 +18,4 @@ Route::get('post/{slug}',function($slug){
         "author" => "Naufal Yoga",
         "body" => "Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem reprehenderit in pariatur! Quis dignissimos eius facilis iure itaque omnis iusto esse blanditiis numquam ducimus, nulla ullam fuga fugit, fugiat nobis pariatur, et exercitationem necessitatibus. Nobis, illo, ullam atque harum accusamus culpa non debitis deserunt, reprehenderit ex adipisci? Nesciunt perspiciatis itaque perferendis obcaecati blanditiis quod qui, voluptatum dolorum doloremque non consequatur maiores laboriosam facilis totam, veniam recusandae suscipit ratione! Sit magni suscipit mollitia animi incidunt nam unde odio omnis optio nulla. Impedit, deleniti totam! Consectetur, consequatur maxime neque, accusamus reprehenderit sunt iste doloribus veritatis quo molestias perspiciatis magni dolore dolor laboriosam."
     ]];
-
-   $new_post=[];
-
-    foreach ($blog_post as $post) {
-
-        if($post["slug"] === $slug){
-            $new_post = $post;
-        }
-    }
-
-    return view('post',[
-        "title"=>"Single Post",
-        "post" => $new_post
-    ]);
-});
+}
