@@ -8,10 +8,10 @@
 
 <article class="mb-5">
 <h2>
-<a href="/post/{{ $post["slug"] }}">{{ $post["title"] }}</a>
+<a href="/post/{{ $post->id }}">{{ $post->title }}</a>
 </h2>
-<h2>{{ $post['author']}}</h2>
-<p>{{ $post['body']}}</p>
+<h2>{{ $post->author}}</h2>
+<p>{{ $post->excerpt}}</p>
 </article>
 
 @endforeach
